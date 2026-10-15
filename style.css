@@ -1,0 +1,258 @@
+/* ===== Cài đặt chung ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(160deg, #ffd6e8, #ffe9c7 50%, #d6e6ff);
+  color: #4a2c4a;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 5; /* Nâng z-index lên để nút bấm nằm trên ảnh siêu to */
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0 0 8px;
+  color: #d6336c;
+}
+.sub {
+  margin: 0 0 30px;
+  font-size: 1.1rem;
+}
+
+/* ===== Nút bấm ===== */
+.btn {
+  position: relative; /* Đảm bảo nút bấm luôn tương tác được */
+  z-index: 10;
+  border: none;
+  background: #d6336c;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 26px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(214, 51, 108, 0.35);
+  transition: transform 0.15s;
+}
+.btn:hover {
+  transform: scale(1.06);
+}
+.btn.small {
+  font-size: 0.95rem;
+  padding: 9px 20px;
+  margin-top: 16px;
+}
+
+/* ===== Bánh kem (vẽ bằng CSS) ===== */
+.cake {
+  position: relative;
+  width: 200px;
+  height: 190px;
+  margin: 0 auto 24px;
+  z-index: 5;
+}
+
+.plate {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  width: 220px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 12px;
+}
+.bottom {
+  bottom: 10px;
+  height: 70px;
+  background: #ff8fb1;
+}
+.top {
+  bottom: 72px;
+  left: 25px;
+  right: 25px;
+  height: 60px;
+  background: #ffc2d6;
+}
+.top::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: #fff;
+  border-radius: 12px;
+}
+.candle {
+  position: absolute;
+  bottom: 132px;
+  left: 94px;
+  width: 12px;
+  height: 34px;
+  background: #4dabf7;
+  border-radius: 3px;
+}
+
+/* Ngọn lửa nhấp nháy */
+.flame {
+  position: absolute;
+  bottom: 164px;
+  left: 93px;
+  width: 14px;
+  height: 24px;
+  background: radial-gradient(circle at 50% 70%, #fff3a0, #ff9f1a);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 0.4s infinite alternate;
+}
+.flame.off {
+  display: none;
+}
+
+@keyframes flicker {
+  from {
+    transform: scale(1) rotate(-3deg);
+  }
+  to {
+    transform: scale(1.15) rotate(3deg);
+  }
+}
+
+/* ===== Lá thư ===== */
+.letter {
+  position: relative;
+  z-index: 6;
+  background: white;
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  animation: popup 0.6s ease;
+}
+.letter h2 {
+  margin-top: 0;
+  color: #d6336c;
+}
+.letter ul {
+  text-align: left;
+  line-height: 1.9;
+  padding-left: 22px;
+}
+.sign {
+  font-style: italic;
+  margin-top: 18px;
+}
+.hidden {
+  display: none;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Hiệu ứng ảnh SIÊU TO bay lên ===== */
+#balloons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Định dạng cho ảnh bay (Đã làm SIÊU TO: 130px đến 160px) */
+.balloon-photo {
+  position: absolute;
+  bottom: -200px; /* Tăng khoảng cách bắt đầu để ảnh to bay lên mượt hơn */
+  width: 145px;
+  height: 145px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 4px solid white; /* Viền trắng dày hơn cho nổi bật */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); /* Đổ bóng đậm hơn */
+  opacity: 0.98; /* Gần như trong suốt hoàn toàn */
+  animation: rise linear infinite;
+}
+
+/* Định dạng cho quả bóng bay màu sắc kèm theo */
+.balloon-shape {
+  position: absolute;
+  bottom: -150px;
+  width: 60px;
+  height: 78px; /* Bóng bay cũng to hơn một chút */
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.8;
+  animation: rise linear infinite;
+}
+.balloon-shape::after {
+  /* Sợi dây bóng bay */
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.98;
+  }
+  100% {
+    transform: translateY(-140vh) rotate(360deg);
+    opacity: 0.7;
+  } /* Bay cao hơn một chút */
+}
+
+/* ===== Canvas pháo giấy ===== */
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+  .balloon-photo {
+    width: 110px;
+    height: 110px;
+    border-width: 3px;
+  } /* Trên điện thoại thu nhỏ nhẹ cho đỡ vướng */
+  .balloon-shape {
+    width: 50px;
+    height: 65px;
+  }
+}

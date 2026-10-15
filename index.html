@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chúc mừng sinh nhật Trần Đức!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Khung chứa ảnh/bóng bay bay lên -->
+    <div id="balloons"></div>
+
+    <!-- Canvas để vẽ pháo giấy -->
+    <canvas id="confetti"></canvas>
+
+    <main class="container">
+      <h1 id="title">Chúc mừng sinh nhật Trần Đức!</h1>
+      <p class="sub">Có một món quà nhỏ dành cho bạn 🎁</p>
+
+      <!-- Bánh kem -->
+      <div class="cake">
+        <div class="flame" id="flame"></div>
+        <div class="candle"></div>
+        <div class="layer top"></div>
+        <div class="layer bottom"></div>
+        <div class="plate"></div>
+      </div>
+
+      <button id="blowBtn" class="btn">🕯️ Thổi nến</button>
+
+      <!-- Lá thư: lúc đầu bị ẩn, thổi nến xong mới hiện -->
+      <section id="letter" class="letter hidden">
+        <h2 id="letterTitle"></h2>
+        <p id="message"></p>
+        <ul id="wishes"></ul>
+        <p class="sign" id="sign"></p>
+        <button id="againBtn" class="btn small">🎉 Bắn pháo giấy nữa</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
